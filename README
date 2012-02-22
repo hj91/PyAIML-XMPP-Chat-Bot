@@ -1,1 +1,10 @@
-This is a chatbot using XMPP and PyAIML
+This is a chatbot using XMPP and PyAIML.
+
+ToDo
+1. The bot should be able to remember users and their previous chat. This functionality can be achieved using PyAIML, but it is not scalable. We can have hundred xmpp contacts..hence remembering their ids and conversation is challenging. So basically we need to make it more scalable and interlligent.
+
+2. Improve the AIML files to make bot speak more relevant stuff in 2012 and beyond.
+
+3. Should be able to handle keywords and act according to rules specified, however, this is not task of PyAIML compiler.
+
+All the best to the forks and watchers. 
