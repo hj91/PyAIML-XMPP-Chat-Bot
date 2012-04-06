@@ -21,8 +21,6 @@ import sys
 
 import time
 import datetime
-import xml.sax.saxutils
-import xmlrpclib
 import xmpp
 import codecs
 import aiml
