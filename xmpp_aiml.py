@@ -27,7 +27,7 @@ import aiml
 
 
 user='user@gmail.com'
-passwd='passwd'
+passwd='gmailpasswd'
 server='gmail.com'
 
 
@@ -38,6 +38,15 @@ k = aiml.Kernel()
 k.learn("std-startup.xml")
 
 k.respond("load aiml b")
+
+
+#this snippet handles presence and subscription...automatically subscribes to user who request subscription. Not recommended for public use.
+def presence_handler(connection_object, message_node):
+		prstype=message_node.getType()
+		who=message_node.getFrom()
+		if prstype == "subscribe":
+			connection_object.send (xmpp.Presence(to=who,typ = 'subscribed'))
+			connection_object.send (xmpp.Presence(to=who,typ = 'subscribe'))
 
 
 class Bot:
@@ -54,6 +63,7 @@ class Bot:
 	connection.connect()
 	result=connection.auth(jid.getNode(),passwd)
 	connection.RegisterHandler('message',message_handler,"")
+	connection.RegisterHandler('presence',presence_handler,"")	
 	connection.sendInitPresence()
         press = xmpp.Presence()
         press.setStatus("Hi from bot...i will chat with you and tell you new things you might like")
