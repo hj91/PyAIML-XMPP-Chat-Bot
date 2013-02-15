@@ -7,4 +7,6 @@ ToDo
 
 3. Should be able to handle keywords and act according to rules specified, however, this is not task of PyAIML compiler.
 
+4. Will MongoDB backend be useful for storing conversation and remembering them for user? I need tips from mongoDB experts..HELP!
+
 All the best to the forks and watchers. 
