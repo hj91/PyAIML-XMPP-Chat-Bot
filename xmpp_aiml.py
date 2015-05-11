@@ -2,7 +2,7 @@
 # Uses PyAIML and xmpppy
 #
 # Author       - Harshad Joshi
-# Date         - May 6, 2011
+# Date         - May 6, 2011 / May 11, 2015
 #
 # Requirements - XMPP chat server (openfire)
 #              - Python 2.5 with xmpp and PyAIML library.
@@ -24,11 +24,13 @@ import datetime
 import xmpp
 import codecs
 import aiml
+from datetime import datetime
 
 
-user='user@gmail.com'
-passwd='gmailpasswd'
-server='gmail.com'
+
+user='jabber account @ server'
+passwd="your password"
+server='jabbim.cz'
 
 
 # the heart and brain of bot...
@@ -38,6 +40,8 @@ k = aiml.Kernel()
 k.learn("std-startup.xml")
 
 k.respond("load aiml b")
+
+a = open("chat.txt","a")
 
 
 #this snippet handles presence and subscription...automatically subscribes to user who request subscription. Not recommended for public use.
@@ -55,8 +59,9 @@ class Bot:
 		command2=str(message_node.getFrom().getStripped())
 				
 		#the fun begins from this place..
-		connect_object.send(xmpp.Message(command2,(k.respond(command1))))				
-	
+		connect_object.send(xmpp.Message(command2,(k.respond(command1))))
+                b = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+		a.write(str(b) + " " + command2 + " >>> " + k.respond(command1) + "\n")
 		
 	jid=xmpp.JID(user)
 	connection=xmpp.Client(server)
